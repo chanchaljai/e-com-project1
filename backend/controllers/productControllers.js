@@ -10,3 +10,38 @@ export const createProduct = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// Get all products
+
+export const getAllProducts = async (req, res) => {
+  try {
+    const products = await product.find().sort({ createdAt: -1 });
+    res.json({ products });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Update a product
+export const updateProduct = async (req, res) => {
+  try {
+    const product = await Product.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body,
+      { new: true }
+    );
+    res.json({ message: "Product updated successfully", product });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Delete a product
+export const deleteProduct = async (req, res) => {
+  try {
+    const product = await Product.findOneAndDelete({ _id: req.params.id });
+    res.json({ message: "Product deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
