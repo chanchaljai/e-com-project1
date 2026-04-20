@@ -1,4 +1,4 @@
-import api from "../api/axios";
+import { api } from "../api/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -31,8 +31,8 @@ export default function AddProduct() {
     }
   };
   return (
-    <div className = "max-w-lg max-auto mt-10 bg-white p-6 shadow rounded" >
-        <h2 className="text-2xt font-bold mb-6">Add Product</h2>
+    <div className = "max-w-lg mx-auto mt-10 bg-white p-6 shadow rounded" >
+        <h2 className="text-2xl font-bold mb-6">Add Product</h2>
         <form onSubmit={handleSubmit} className="space-y-3">    
            {Object.keys(form).map((key) => (
                <input
@@ -50,3 +50,5 @@ export default function AddProduct() {
     </div>
   )
 }
+
+
