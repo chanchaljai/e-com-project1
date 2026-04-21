@@ -5,13 +5,16 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProductDetails  from "./pages/ProductDetails";
 import AddProduct from "./admin/AddProduct";
+import ProductList from "./admin/ProductList";
 
 const router = createBrowserRouter([
   {path: "/", element: <Home />},
   {path: "/login", element: <Login />}, 
   {path: "/register", element: <Register />},
   {path: "/product/:id", element: <ProductDetails />},
-  {path: "/admin/products/add", element: <AddProduct />}
+  {path: "/admin/products/add", element: <AddProduct />},
+  {path: "/admin/products", element: <ProductList />}
+
 ]);
 
 export default function App() {

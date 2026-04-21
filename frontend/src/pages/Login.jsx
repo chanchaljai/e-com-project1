@@ -38,7 +38,7 @@ export default function Login() {
         <h1 className="text-3xl text-center mb-3 text-gray-800 font-bold ">
           Login
         </h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-3">
           <input
             type="email"
             name="email"
