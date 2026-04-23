@@ -8,6 +8,15 @@ export default function ProductList() {
     const res = await api.get("/products");
     setProducts(res.data);
   }
+
+  const deleteProduct = async (id) => {
+    try{
+      await api.delete(`/products/${id}`);
+      loadProducts();
+    }catch(error){
+      console.error("Error deleting product:", error);
+    }
+  }
   useEffect(() => {
     loadProducts();
   }, []);
@@ -19,7 +28,7 @@ export default function ProductList() {
         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Add New Product</Link>
       </div>
       <table>
-        
+        tr
       </table>
     </div>
   );
