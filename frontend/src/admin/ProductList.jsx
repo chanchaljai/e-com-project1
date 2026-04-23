@@ -8,12 +8,19 @@ export default function ProductList() {
     const res = await api.get("/products");
     setProducts(res.data);
   }
+  useEffect(() => {
+    loadProducts();
+  }, []);
   return (
-    <div>
-      <div>
-        <h2>Product List</h2>
-        <Link to="/admin/products/add">Add New Product</Link>
+    <div className="max-w-4xl mx-auto mt-10">
+      <div className="flex justify-between mb-4 p-4">
+        <h2 className="text-2xl font-bold">Product List</h2>
+        <Link to="/admin/products/add" 
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Add New Product</Link>
       </div>
+      <table>
+        
+      </table>
     </div>
   );
 }
