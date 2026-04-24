@@ -28,7 +28,16 @@ export default function ProductList() {
         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Add New Product</Link>
       </div>
       <table>
-        tr
+        <thead>
+          <tr>
+            <th className="px-4 py-2">Title</th>
+            <th className="px-4 py-2">Price</th>
+            <th className="px-4 py-2">Category</th>
+            <th className="px-4 py-2">Image</th>
+            <th className="px-4 py-2">Stock</th>
+            <th className="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
       </table>
     </div>
   );
