@@ -6,7 +6,9 @@ export default function ProductList() {
   const [products, setProducts] = useState([]);
   const loadProducts = async () => {
     const res = await api.get("/products");
-    setProducts(res.data);
+    console.log("API:", res.data);
+
+    setProducts(Array.isArray(res.data) ? res.data : res.data.products || []);
   };
 
   const deleteProduct = async (id) => {
@@ -43,13 +45,13 @@ export default function ProductList() {
         <tbody>
           {products.map((product) => (
             <tr key={product._id}>
-              <td className="border border-gray-200 px-4 py-2">{product.title}</td>
-              <td className="border border-gray-200 px-4 py-2">{product.price}</td>
-              <td className="border border-gray-200 px-4 py-2">{product.stock}</td>
-              <td className="border border-gray-200 px-4 py-2">
+              <td className="border px-4 py-2">{product.title}</td>
+              <td className="border px-4 py-2">{product.price}</td>
+              <td className="border px-4 py-2">{product.stock}</td>
+              <td className="border px-4 py-2">
                 <Link
                   to={`/admin/products/edit/${product._id}`}
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2"
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2"
                 >
                   Edit
                 </Link>
