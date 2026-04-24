@@ -7,16 +7,16 @@ export default function ProductList() {
   const loadProducts = async () => {
     const res = await api.get("/products");
     setProducts(res.data);
-  }
+  };
 
   const deleteProduct = async (id) => {
-    try{
+    try {
       await api.delete(`/products/${id}`);
       loadProducts();
-    }catch(error){
+    } catch (error) {
       console.error("Error deleting product:", error);
     }
-  }
+  };
   useEffect(() => {
     loadProducts();
   }, []);
@@ -24,8 +24,12 @@ export default function ProductList() {
     <div className="max-w-4xl mx-auto mt-10">
       <div className="flex justify-between mb-4 p-4">
         <h2 className="text-2xl font-bold">Product List</h2>
-        <Link to="/admin/products/add" 
-        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Add New Product</Link>
+        <Link
+          to="/admin/products/add"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        >
+          Add New Product
+        </Link>
       </div>
       <table>
         <thead>
@@ -36,6 +40,29 @@ export default function ProductList() {
             <th className="px-4 py-2">Actions</th>
           </tr>
         </thead>
+        <tbody>
+          {products.map((product) => (
+            <tr key={product._id}>
+              <td className="border border-gray-200 px-4 py-2">{product.title}</td>
+              <td className="border border-gray-200 px-4 py-2">{product.price}</td>
+              <td className="border border-gray-200 px-4 py-2">{product.stock}</td>
+              <td className="border border-gray-200 px-4 py-2">
+                <Link
+                  to={`/admin/products/edit/${product._id}`}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => deleteProduct(product._id)}
+                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
