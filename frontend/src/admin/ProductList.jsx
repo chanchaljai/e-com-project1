@@ -32,8 +32,6 @@ export default function ProductList() {
           <tr>
             <th className="px-4 py-2">Title</th>
             <th className="px-4 py-2">Price</th>
-            <th className="px-4 py-2">Category</th>
-            <th className="px-4 py-2">Image</th>
             <th className="px-4 py-2">Stock</th>
             <th className="px-4 py-2">Actions</th>
           </tr>
